@@ -1,0 +1,27 @@
+::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+.no-border {
+    border: none;
+    outline: none; /* This removes the default blue outline for focused inputs */
+    
+}
+  
+.no-border:focus {
+    border: none;
+    outline: none; /* Ensures no outline is shown when the input is clicked or focused */
+    transition-duration: 0.5s;
+    background-color: #a3a3a3;
+}
+
+.no-border:hover{
+    transition-duration: 0.5s;
+    background-color: #a3a3a3;
+}
+
+.button:hover{
+    transition-duration: 0.5s;
+    background-color: #545e6d;
+}
