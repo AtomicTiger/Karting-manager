@@ -1,10 +1,10 @@
 import styled from "styled-components"
-import './loginForm.css';
+import './registerForm.css';
 import { Link } from "react-router-dom";
 
-function LoginForm() {
+function RegisterForm() {
 
-    const LoginForm = styled.div`
+    const RegisterForm = styled.div`
         background: #525252;
         box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
@@ -57,16 +57,16 @@ function LoginForm() {
 
     `
     return (
-      <LoginForm>
+      <RegisterForm>
             <LoginInput className="no-border" placeholder="Login"/>
             <LoginInput className="no-border"  placeholder="Password"/>  
-            <Button className="button no-border-but">Log in</Button>
+            <Button className="button no-border-but">Create Team</Button>
             <Button className="button no-border-but">
-                <Link to="/register">Create new Team</Link>
+                <Link to="/">Go Back</Link>
             </Button>
-      </LoginForm> 
+      </RegisterForm> 
     );
   }
-export default LoginForm;
+export default RegisterForm;
 
 

@@ -25,3 +25,35 @@
     transition-duration: 0.5s;
     background-color: #545e6d;
 }
+.button.no-border-but {
+    border: none;
+    padding: 10px 20px;
+    background-color: #007bff; /* Example button background color */
+    color: white; /* Example text color */
+    cursor: pointer;
+    display: inline-flex; /* To allow flex properties for child */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Remove underline from button text */
+}
+
+/* Targeting the Link inside the Button */
+.button.no-border-but a {
+    color: inherit; /* Inherit the button's text color */
+    text-decoration: none; /* Remove underline */
+    display: flex; /* Ensure it behaves like a block/flex element */
+    align-items: center; /* Align text inside the button */
+    justify-content: center; /* Center text inside the button */
+    width: 100%; /* Make the link span the entire button */
+    height: 100%; /* Make the link span the entire button */
+    padding: inherit; /* Use button's padding */
+    font: inherit; /* Use the font style of the parent button */
+}
+
+.button.no-border-but:hover {
+    background-color: #0056b3; /* Darken background color on hover */
+}
+
+.button.no-border-but a:hover {
+    color: inherit; /* Ensure link color stays consistent on hover */
+}
