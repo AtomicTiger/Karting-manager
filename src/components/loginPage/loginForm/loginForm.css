@@ -21,10 +21,6 @@
     background-color: #a3a3a3;
 }
 
-.button:hover{
-    transition-duration: 0.5s;
-    background-color: #545e6d;
-}
 .button.no-border-but {
     border: none;
     padding: 10px 20px;
