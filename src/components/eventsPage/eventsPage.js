@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import './eventPage.css'
 function EventsPage() {
     const Events = styled.div`
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       background-color: #525252;
       align-self: center;
       height: 80vh;
@@ -21,7 +24,8 @@ function EventsPage() {
     font-weight: 700;
     font-size: 30px;
     line-height: 63px;
-    margin-top: 5vh;
+    margin-top: 2.5vh;
+    margin-bottom: 4vh;
     padding-bottom: 60px;
     align-self: center;
     color: #FFFFFF;
@@ -33,10 +37,22 @@ function EventsPage() {
     transition-duration: 0.4s;
     -webkit-transition-duration: 0.4s; /* Safari */
     `
+    const Title = styled.p`
+      margin-block-start 0;
+      margin-block-end: 0;
+      margin-top: 3vh;
+      font-family: 'Assistant';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 84px;
+
+      color: #FFFFFF;
+    `
     return (
       <div className="Body">
         <Events>
-          <h1>Events History</h1>
+          <Title>Events History</Title>
           <EventsList/>
           <Button className="button no-border-but">
                   <Link to="/create">Add new</Link>

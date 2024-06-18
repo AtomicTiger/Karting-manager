@@ -12,14 +12,14 @@ function RegisterForm() {
         flex-direction: column;
         justify-content: center;
         align-self: center;
-        width: 33%;
+        width: 600px;
         height: 65vh;
     `
     const LoginInput = styled.input`
         font-family: 'Assistant';
         font-style: normal;
         font-weight: 700;
-        font-size: 30px;
+        font-size: 1.88em;
         line-height: 39px;
         color: #FFFFFF;
         background: #484848;
@@ -41,7 +41,7 @@ function RegisterForm() {
         font-family: 'Assistant';
         font-style: normal;
         font-weight: 700;
-        font-size: 30px;
+        font-size: 1.88em;
         line-height: 63px;
         margin-top: 5vh;
         padding-bottom: 60px;

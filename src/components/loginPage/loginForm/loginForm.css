@@ -53,3 +53,19 @@
 .button.no-border-but a:hover {
     color: inherit; /* Ensure link color stays consistent on hover */
 }
+
+@media screen and (max-width: 600px) {
+    *{
+      font-size: 0.95em
+    }
+}
+@media screen and (max-width: 450px) {
+    *{
+      font-size: 0.90em
+    }
+}
+@media screen and (max-width: 380px) {
+    *{
+      font-size: 0.85em
+    }
+}

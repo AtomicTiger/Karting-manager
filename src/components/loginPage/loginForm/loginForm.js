@@ -12,14 +12,14 @@ function LoginForm() {
         flex-direction: column;
         justify-content: center;
         align-self: center;
-        width: 33%;
+        width: 600px;
         height: 65vh;
     `
     const LoginInput = styled.input`
         font-family: 'Assistant';
         font-style: normal;
         font-weight: 700;
-        font-size: 30px;
+        font-size: 1.88em;
         line-height: 39px;
         color: #FFFFFF;
         background: #484848;
@@ -41,7 +41,7 @@ function LoginForm() {
         font-family: 'Assistant';
         font-style: normal;
         font-weight: 700;
-        font-size: 30px;
+        font-size: 1.88em;
         line-height: 63px;
         margin-top: 5vh;
         padding-bottom: 60px;
@@ -62,7 +62,7 @@ function LoginForm() {
             <LoginInput className="no-border"  placeholder="Password"/>  
             <Button className="button no-border-but">Log in</Button>
             <Button className="button no-border-but">
-                <Link to="/register">Create new Team</Link>
+                <Link to="/register">Create Team</Link>
             </Button>
       </LoginForm> 
     );
