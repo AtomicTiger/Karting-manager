@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import EventItem from "./Eventlist/event";
+import EventItem from "./Eventlist/EventItem";
 import { useState } from "react";
 
 function EventsList() {
@@ -50,8 +50,6 @@ function EventsList() {
   }
   
 export default EventsList;
-
-/* Rectangle 15 */
 
 
 

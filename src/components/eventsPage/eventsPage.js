@@ -10,7 +10,7 @@ function EventsPage() {
       background-color: #525252;
       align-self: center;
       height: 80vh;
-      width: 50%;
+      width: 961px;
       text-align: center;
     `
     const Button = styled.button`
@@ -22,7 +22,7 @@ function EventsPage() {
     font-family: 'Assistant';
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 1.88em;
     line-height: 63px;
     margin-top: 2.5vh;
     margin-bottom: 4vh;
