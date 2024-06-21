@@ -1,7 +1,18 @@
+import styled from "styled-components";
+import EventForm from "./eventForms/firstForm";
+
 function EventCreation() {
-    return (
-      <h1>Event Creation</h1>
-    );
+  const EventPage = styled.div`
+  background-color: #3E3D3D;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+`
+return (
+  <EventPage>
+    <EventForm/>
+  </EventPage> 
+);
   }
   
 export default EventCreation;
