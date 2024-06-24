@@ -1,37 +1,9 @@
 import styled from "styled-components"
 import './loginForm.css';
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function LoginForm() {
-
-    const LoginForm = styled.div`
-        background: #525252;
-        box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-self: center;
-        width: 600px;
-        height: 65vh;
-    `
-    const LoginInput = styled.input`
-        font-family: 'Assistant';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 1.88em;
-        line-height: 39px;
-        color: #FFFFFF;
-        background: #484848;
-        box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-        width: 67%;
-        height: 6vh;
-        margin-top: 8.6vh;
-        align-self: center;
-        padding-left: 15px;
-        transition-duration: 0.5s;
-    `
     const Button = styled.button`
         width: 48%;
         height: 6vh;
@@ -56,15 +28,23 @@ function LoginForm() {
         -webkit-transition-duration: 0.4s; /* Safari */
 
     `
+    const [login,setLogin] = useState("")
+    const onLoginChange = (e) => {
+        setLogin(e.target.value)
+    }
+    const [pass,setPass] = useState("")
+    const onPassChange = (e) => {
+        setPass(e.target.value)
+    }
     return (
-      <LoginForm>
-            <LoginInput className="no-border" placeholder="Login"/>
-            <LoginInput className="no-border"  placeholder="Password"/>  
+      <div className="inputContainer">
+            <input className="no-border LogInput" onChange={onLoginChange} placeholder="Login"/>
+            <input className="no-border LogInput" onChange={onPassChange} type="password"  placeholder="Password"/>  
             <Button className="button no-border-but">Log in</Button>
             <Button className="button no-border-but">
                 <Link to="/register">Create Team</Link>
             </Button>
-      </LoginForm> 
+      </div> 
     );
   }
 export default LoginForm;
