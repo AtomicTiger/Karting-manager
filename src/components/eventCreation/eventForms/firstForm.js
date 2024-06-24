@@ -7,6 +7,9 @@ function EventForm() {
     const [drivers, setDrivers] = new useState([{"name":"Driver 1"},{"name":"Driver 2"}])
     const [driversAmount,setDriversAmount] = new useState(2)
     const [formPage,setFormPage] = new useState(1)
+    const [gokarts,setGokarts] = new useState([])
+    const [date,setDate] = new useState()
+    const [inputString, setInputString] = useState('');
     const MAX_DRIVERS = 5;
 
     const addNewDriver = () => {
@@ -71,6 +74,21 @@ function EventForm() {
     const back = ()=>{
         setFormPage(1)
     }
+    const getGokarts = (e)=>{
+        const value = e.target.value;
+        setInputString(value);
+
+        
+        const array = value
+        .split(',')            
+        .map(Number)           
+        .filter(n => !isNaN(n)); 
+        setGokarts(array);
+        console.log(gokarts)
+    }
+    const getDate = (e)=>{
+        setDate(e.target.value)
+    }
     const shouldHideAdd = driversAmount > 4 || formPage !== 1;
     const shouldHideDel = driversAmount < 3  || formPage !== 1;
     return (
@@ -84,7 +102,9 @@ function EventForm() {
             ))}    
         </div>
         <div className="gokarts" style={{ display: formPage != 2 ? 'none' : 'flex' }}>
-            <input  key="gokarts" className="no-border input" placeholder="Add gokarts number: 1,2,3,4"/>
+            <input  key="gokarts" onChange={getGokarts} className="no-border input" placeholder="Add gokarts number: 1,2,3,4"/>
+
+            <input  key="date" type="date" onChange={getDate}  className="no-border input" placeholder="Add gokarts number: 1,2,3,4"/>
         </div>
         <Button className="button no-border-but" onClick={addNewDriver}  style={{  display: shouldHideAdd ? 'none' : 'flex'}}>Add driver</Button>
         <Button className="button no-border-but" onClick={deleteDriver} style={{ display: shouldHideDel ? 'none' : 'flex' }} >Delete Last driver</Button>
