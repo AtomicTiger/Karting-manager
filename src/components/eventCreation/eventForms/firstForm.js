@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./form.css"
 function EventForm() {
+    const [eventName, setEventName] = new useState("")
     const [drivers, setDrivers] = new useState([{"name":"Driver 1"},{"name":"Driver 2"}])
     const [driversAmount,setDriversAmount] = new useState(2)
+    const [formPage,setFormPage] = new useState(1)
     const MAX_DRIVERS = 5;
 
     const addNewDriver = () => {
@@ -13,7 +15,6 @@ function EventForm() {
             alert("The maximum number of drivers has been reached.");
             return; 
         }
-
         const newAmount = driversAmount + 1;
         console.log('Driver ' + newAmount);
 
@@ -24,34 +25,18 @@ function EventForm() {
 
         setDriversAmount(newAmount);
     }
-    const LoginForm = styled.div`
-        background: #525252;
-        box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-self: center;
-        width: 600px;
-        height: 65vh;
-    `
-    const LoginInput = styled.input`
-        font-family: 'Assistant';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 1.88em;
-        line-height: 39px;
-        color: #FFFFFF;
-        background: #484848;
-        box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-        width: 67%;
-        height: 6vh;
-        margin-top: 2vh;
-        align-self: center;
-        padding-left: 15px;
-        transition-duration: 0.5s;
-    `
+    
+    const deleteDriver = () => {
+        if (driversAmount <= 0) {
+            alert("No drivers to remove.");
+            return;
+        }
+
+        const newAmount = driversAmount - 1;
+
+        setDrivers((prevDrivers) => prevDrivers.slice(0, -1));
+        setDriversAmount(newAmount);
+    }
     const Button = styled.button`
         width: 48%;
         height: 4vh;
@@ -74,23 +59,42 @@ function EventForm() {
         cursor: pointer;
         transition-duration: 0.4s;
         -webkit-transition-duration: 0.4s; /* Safari */
-    `
+    // `
+    // index, e.target.value
+    const onChangeNameHandler = (e)=>{
+        setEventName(e.target.value)
+    }
+
+    const next = ()=>{
+        setFormPage(2)
+    }
+    const back = ()=>{
+        setFormPage(1)
+    }
+    const shouldHideAdd = driversAmount > 4 || formPage !== 1;
+    const shouldHideDel = driversAmount < 3  || formPage !== 1;
     return (
-      <LoginForm>
-        <div className="inputs">
+      <div className="EventForm">
+        <div className="inputs" style={{ display: formPage != 1 ? 'none' : 'flex' }}>
+            <input key="eventname" className="no-border input" onChange={onChangeNameHandler} placeholder="Event name"  value={eventName}/>
             {drivers.map((driver, index) => (
-                <LoginInput className="no-border" placeholder={driver.name}/>
+                <div className="Drivers">
+                    <input key={index} className="no-border input" id={index} placeholder={driver.name}/>
+                </div>
             ))}    
         </div>
-        <div className="gokarts">
-            <LoginInput className="no-border" placeholder="Add gokarts number: 1,2,3,4"/>
+        <div className="gokarts" style={{ display: formPage != 2 ? 'none' : 'flex' }}>
+            <input  key="gokarts" className="no-border input" placeholder="Add gokarts number: 1,2,3,4"/>
         </div>
-        <Button className="button no-border-but" onClick={addNewDriver}>Add driver</Button>
-        <Button className="button no-border-but" >Next</Button>
-        <Button className="button no-border-but">
+        <Button className="button no-border-but" onClick={addNewDriver}  style={{  display: shouldHideAdd ? 'none' : 'flex'}}>Add driver</Button>
+        <Button className="button no-border-but" onClick={deleteDriver} style={{ display: shouldHideDel ? 'none' : 'flex' }} >Delete Last driver</Button>
+        <Button onClick={next} className="button no-border-but" style={{ display: formPage !== 1 ? 'none' : 'flex' }}> Next</Button>
+        <Button onClick={back} className="button no-border-but" style={{ display: formPage !== 2 ? 'none' : 'flex' }}> Back</Button>
+        <Button className="button no-border-but"style={{ display: formPage !== 2 ? 'none' : 'flex' }}> Create</Button>
+        <Button className="button no-border-but" style={{ display: formPage !== 1 ? 'none' : 'flex' }}>
             <Link to="/main">Cancle</Link>
         </Button>
-      </LoginForm> 
+      </div> 
     );
   }
 export default EventForm;

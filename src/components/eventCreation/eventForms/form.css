@@ -9,3 +9,36 @@
     justify-content: center;
     display: none;
 }
+.Drivers{
+    display: flex;
+    flex-direction:  row;
+    justify-content: center;
+}
+.EventForm{
+    background: #525252;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width: 600px;
+    height: 70vh;
+}
+.input{
+    font-family: 'Assistant';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.88em;
+    line-height: 39px;
+    color: #FFFFFF;
+    background: #484848;
+    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    width: 67%;
+    height: 6vh;
+    margin-top: 2vh;
+    align-self: center;
+    padding-left: 15px;
+    transition-duration: 0.5s;
+}
