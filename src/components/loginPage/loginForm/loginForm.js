@@ -2,6 +2,7 @@ import styled from "styled-components"
 import './loginForm.css';
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import axios from 'axios';
 
 function LoginForm() {
     const Button = styled.button`
@@ -28,6 +29,19 @@ function LoginForm() {
         -webkit-transition-duration: 0.4s; /* Safari */
 
     `
+    async function Login(){
+        try{
+            const response = await axios.post('http://localhost:9000/login',{
+                login:login,
+                password :pass,
+            });
+            console.log(response);
+        }catch (error) {
+            console.error(error);
+        }
+    }
+     
+
     const [login,setLogin] = useState("")
     const onLoginChange = (e) => {
         setLogin(e.target.value)
@@ -40,7 +54,7 @@ function LoginForm() {
       <div className="inputContainer">
             <input className="no-border LogInput" onChange={onLoginChange} placeholder="Login"/>
             <input className="no-border LogInput" onChange={onPassChange} type="password"  placeholder="Password"/>  
-            <Button className="button no-border-but">Log in</Button>
+            <Button className="button no-border-but" onClick={Login}>Log in</Button>
             <Button className="button no-border-but">
                 <Link to="/register">Create Team</Link>
             </Button>
