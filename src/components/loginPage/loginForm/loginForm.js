@@ -35,13 +35,13 @@ function LoginForm() {
                 login:login,
                 password :pass,
             });
-            console.log(response);
+            setUserID(response.data.userId)
         }catch (error) {
             console.error(error);
         }
     }
      
-
+    const [userID, setUserID] = useState()
     const [login,setLogin] = useState("")
     const onLoginChange = (e) => {
         setLogin(e.target.value)

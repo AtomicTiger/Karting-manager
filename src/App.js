@@ -8,13 +8,14 @@ import RaceStats from './components/raceStats/raceStats.js';
 import RegisterPage from './components/registerPage/register';
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 import FinishedStint from './components/stintEnd/stintEnd.js';
+import MainPage from './components/MainPage/MainPage.js';
 
 
 function App() {
   const router = createBrowserRouter([
     {path: '/',
     children: [
-      {path: '/', element: <LoginPage/>},
+      {path: '/', element: <MainPage/>},
       {path: '/main', element: <EventsPage/>},
       {path: '/edit', element: <EditPage/>},
       {path: '/view', element: <ViewPage/>},
