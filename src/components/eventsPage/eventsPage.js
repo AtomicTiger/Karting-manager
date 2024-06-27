@@ -7,11 +7,12 @@ function EventsPage() {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background-color: #525252;
+      background-color: rgb(27, 27, 27);
       align-self: center;
       height: 80vh;
       width: 961px;
       text-align: center;
+      border-radius:10px;
     `
     const Button = styled.button`
     width: 50%;

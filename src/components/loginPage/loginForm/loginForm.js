@@ -8,7 +8,7 @@ function LoginForm() {
     const Button = styled.button`
         width: 48%;
         height: 6vh;
-        background: #393C43;
+        background: white;
         box-shadow: 4px 8px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
         font-family: 'Assistant';
@@ -19,7 +19,7 @@ function LoginForm() {
         margin-top: 5vh;
         padding-bottom: 60px;
         align-self: center;
-        color: #FFFFFF;
+        color: rgb(27, 27, 27);
         cursor:pointer;
         user-select:none;
         text-align: center;

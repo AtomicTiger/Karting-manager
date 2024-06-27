@@ -15,7 +15,7 @@
     justify-content: center;
 }
 .EventForm{
-    background: #525252;
+    background: rgb(27, 27, 27);
     box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     display: flex;
