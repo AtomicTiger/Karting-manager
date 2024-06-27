@@ -15,20 +15,24 @@
     background-size: cover;
     justify-content: center;
     opacity: 0.8;
-    backdrop-filter: blur(5px)
+    backdrop-filter: blur(5px);
+    transition: ease 0.5s;
         
 }
 
 .bg1{
     background-image: url(./bg1.jpg);
+    transition: ease 0.5s;
 }
 
 .bg2{
     background-image: url(./bg2.jpg);
+    transition: ease 0.5s;
 }
 
 .bg3{
     background-image: url(./bg3.jpg);
+    transition: ease 0.5s;
 }
 
 .Background{
