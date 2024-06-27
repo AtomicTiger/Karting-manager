@@ -13,7 +13,7 @@ function NavBar() {
         height: 17.5%;
         color:white;
         
-        background: #525252;
+        background: rgb(27, 27, 27);
         box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.5);
     `
     const Home = ()=>{

@@ -17,6 +17,7 @@
     opacity: 0.8;
     backdrop-filter: blur(5px);
     transition: ease 0.5s;
+    
         
 }
 
@@ -37,4 +38,5 @@
 
 .Background{
     background-color: #252525;
+    overflow: hidden;
 }
