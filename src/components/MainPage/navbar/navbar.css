@@ -1,8 +1,327 @@
 .left{
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 .Title{
     margin-left: 30px;
+    font-size: 3em;
 }
+
+.Menu{
+    align-self: center;
+    margin-right: 50px;
+}
+@keyframes rollIn {
+    0% {
+        transform: translateY(-150%) rotate(-90deg);
+        opacity: 0;
+        z-index: -1;
+    }
+    100% {
+        transform: translateY(200px); /* Default translation for smaller screens */
+        opacity: 1;
+        z-index: 1;
+    }
+}
+
+@keyframes rollOut {
+    0% {
+        transform: translateY(200px); /* Start from down position for smaller screens */
+        opacity: 1;
+        z-index: 1;
+    }
+    100% {
+        transform: translateY(-150%) rotate(-90deg);
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+@media (max-width: 800px) {
+    @keyframes rollIn {
+        0% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+        100% {
+            transform: translateY(180px); /* Adjust translation for medium screens */
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    @keyframes rollOut {
+        0% {
+            transform: translateY(180px);
+            opacity: 1;
+            z-index: 1;
+        }
+        100% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+    }
+}
+@media (max-width: 700px) {
+    @keyframes rollIn {
+        0% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+        100% {
+            transform: translateY(220px); /* Adjust translation for medium screens */
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    @keyframes rollOut {
+        0% {
+            transform: translateY(220px);
+            opacity: 1;
+            z-index: 1;
+        }
+        100% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+    }
+}
+@media (max-width: 600px) {
+    @keyframes rollIn {
+        0% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+        100% {
+            transform: translateY(147px); /* Adjust translation for medium screens */
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    @keyframes rollOut {
+        0% {
+            transform: translateY(147px);
+            opacity: 1;
+            z-index: 1;
+        }
+        100% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+    }
+}
+@media (max-width: 450px) {
+    @keyframes rollIn {
+        0% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+        100% {
+            transform: translateY(108px); /* Adjust translation for medium screens */
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    @keyframes rollOut {
+        0% {
+            transform: translateY(108px);
+            opacity: 1;
+            z-index: 1;
+        }
+        100% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+    }
+}
+@media (max-width: 415px) {
+    @keyframes rollIn {
+        0% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+        100% {
+            transform: translateY(120px); /* Adjust translation for medium screens */
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    @keyframes rollOut {
+        0% {
+            transform: translateY(120px);
+            opacity: 1;
+            z-index: 1;
+        }
+        100% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+    }
+}
+@media (max-width: 380px) {
+    @keyframes rollIn {
+        0% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+        100% {
+            transform: translateY(93px); /* Adjust translation for medium screens */
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    @keyframes rollOut {
+        0% {
+            transform: translateY(93px);
+            opacity: 1;
+            z-index: 1;
+        }
+        100% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+    }
+}
+@media (max-width: 350px) {
+    @keyframes rollIn {
+        0% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+        100% {
+            transform: translateY(88px); /* Adjust translation for medium screens */
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    @keyframes rollOut {
+        0% {
+            transform: translateY(88px);
+            opacity: 1;
+            z-index: 1;
+        }
+        100% {
+            transform: translateY(-150%) rotate(-90deg);
+            opacity: 0;
+            z-index: -1;
+        }
+    }
+}
+.MenuDown {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 28%;
+    height: auto;
+    align-self: flex-end;
+    margin-right: 30px;
+    background: #525252;
+    box-shadow: -10px 10px 4px rgba(0, 0, 0, 0.25), 10px 10px 4px rgba(0, 0, 0, 0.25);
+    position: absolute; /* Ensure the element can move freely */
+    right: 0; /* Positioning it to align with margin-right */
+    top: -30px;  /* Start slightly off-screen */
+    overflow: hidden;
+    z-index: -1; /* Initial z-index */
+    transition: z-index 2s ease-in-out; /* Smooth z-index transition */
+}
+
+/* Animation when rolling in */
+.MenuDown.roll-in {
+    animation: rollIn 1s forwards;
+    z-index: 1; /* Ensure it stays above other elements during animation */
+}
+
+/* Animation when rolling out */
+.MenuDown.roll-out {
+    animation: rollOut 1s forwards;
+    pointer-events: none; /* Prevent interaction when animating out */
+}
+
+
+
+
+
+.Container{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.UpperContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: end;
+}
+
+.Login{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    text-decoration: none;
+    color: white;
+}
+
+.Log{
+    margin-left: 20px;
+    font-size: 3em;
+}
+
+.Signin{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 22px;
+    transition: ease-out 0.5s;
+    text-decoration: none;
+    color: white;
+}
+
+.Create{
+    margin-left: 20px;
+    font-size: 2em;
+}
+
+.Signin:hover{
+    transition: ease-out 0.5s;
+    background-color: #8f8f8f;
+}
+.Login:hover{
+    transition: ease-in-out 0.5s;
+    background-color: #8f8f8f;
+}
+
+.logoSVG{
+    width: 30%; 
+    height: 95%;
+    margin-left: 10px; 
+}
+
+svg {
+    width:  auto;
+    height: auto;
+}
+

@@ -6,7 +6,7 @@ function MainPage() {
         <div>
             <NavBar/>
             <div>
-
+                
             </div>
             <Footer/>
         </div>
