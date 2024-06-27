@@ -1,0 +1,36 @@
+.Big{
+    font-size: 4em;
+    color: #ffffff;
+    align-self:center;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    text-align: center;
+
+}
+.PhotoContainer{
+    display: flex;
+    width:100%;
+    height: 730px;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    justify-content: center;
+    opacity: 0.8;
+    backdrop-filter: blur(5px)
+        
+}
+
+.bg1{
+    background-image: url(./bg1.jpg);
+}
+
+.bg2{
+    background-image: url(./bg2.jpg);
+}
+
+.bg3{
+    background-image: url(./bg3.jpg);
+}
+
+.Background{
+    background-color: #252525;
+}

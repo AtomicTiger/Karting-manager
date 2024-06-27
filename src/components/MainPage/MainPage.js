@@ -1,3 +1,4 @@
+import CarouselKarting from "./Carousel/Carousel";
 import Footer from "./footer/footer";
 import NavBar from "./navbar/navbar";
 
@@ -5,9 +6,7 @@ function MainPage() {
     return (
         <div>
             <NavBar/>
-            <div>
-                
-            </div>
+            <CarouselKarting/>
             <Footer/>
         </div>
     );
