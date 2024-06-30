@@ -87,7 +87,7 @@
     font-family: 'Assistant';
     font-style: normal;
     font-weight: 700;
-    font-size: 1.88em;
+    font-size: 2em;
     line-height: 39px;
     color: #FFFFFF;
     background: #484848;
@@ -95,7 +95,7 @@
     border-radius: 10px;
     width: 67%;
     height: 6vh;
-    margin-top: 8.6vh;
+    margin-top: 50px;
     align-self: center;
     padding-left: 15px;
     transition-duration: 0.5s;

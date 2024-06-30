@@ -23,7 +23,6 @@
 
 .button.no-border-but {
     border: none;
-    padding: 10px 20px;
     background-color: white; /* Example button background color */
     color: rgb(27, 27, 27); /* Example text color */
     cursor: pointer;
@@ -47,7 +46,7 @@
 }
 
 .button.no-border-but:hover {
-    background-color: #0056b3; /* Darken background color on hover */
+    background-color: #575757; /* Darken background color on hover */
 }
 
 .button.no-border-but a:hover {
@@ -81,7 +80,7 @@
         border-radius: 10px;
         width: 67%;
         height: 6vh;
-        margin-top: 8.6vh;
+        margin-top: 50px;
         align-self: center;
         padding-left: 15px;
         transition-duration: 0.5s;
@@ -96,4 +95,25 @@
     align-self: center;
     width: 600px;
     height: 65vh;
+}
+
+.HomeButton{
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+}
+.HomeButton h1{
+    align-self: center;
+}
+
+.Home{
+    text-decoration: none;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
