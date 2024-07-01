@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import './event.css'
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
 
 function EventItem(props){
 
+    const navigate = useNavigate();
+    
     const Stuff = styled.div`
         display:felx;
         flex-direction: column;
@@ -32,6 +35,16 @@ function EventItem(props){
         transition-duration: 0.4s;
         -webkit-transition-duration: 0.4s; /* Safari */
     `
+    
+    const GoIntoView = (e)=>{
+        sessionStorage.setItem("Event", e.target.id)
+        navigate('/view');
+    }
+    const GoIntoEdit = (e)=>{
+        sessionStorage.setItem("Event", e.target.id)
+        navigate('/edit');
+    }
+
     const formattedDate = moment(props.raceData.Date).format('YYYY-MM-DD')
     return (
         <Stuff>
@@ -40,8 +53,8 @@ function EventItem(props){
                     <div className="race_name">{race.Name}</div>
                     <div className="race_date">{formattedDate}</div>
                     <div className="Buttons">
-                        <Button className="button no-border-but">View</Button>
-                        <Button className="button no-border-but" >Edit</Button>
+                        <Button className="button no-border-but" id={race._id} onClick={GoIntoView}>View</Button>
+                        <Button className="button no-border-but" id={race._id} onClick={GoIntoEdit}>Edit</Button>
                     </div>
                 </div>
             ))}    
