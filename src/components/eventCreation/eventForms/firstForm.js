@@ -107,7 +107,8 @@ function EventForm() {
                 names.push(driver.name);
             });
             const decodedPayload = jwtDecode(sessionStorage.getItem('token'));
-            const formData = { name: eventName,user_id: decodedPayload.userId, driver1: names[0], driver2: names[1] ,driver3: names[2],driver4: names[3],driver5: names[4], date: date};
+            console.log(decodedPayload)
+            const formData = { name: eventName,userId: decodedPayload.userId, driver1: names[0], driver2: names[1] ,driver3: names[2],driver4: names[3],driver5: names[4], date: date};
             const res = await axios.post('http://localhost:9000/eventCreation', formData, { withCredentials: true });
             if(!res){
                 console.log("Event creation failed")

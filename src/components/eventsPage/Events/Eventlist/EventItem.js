@@ -1,26 +1,9 @@
 import styled from "styled-components";
 import './event.css'
+import moment from 'moment';
 
 function EventItem(props){
-    // const List = styled.div`
-    //     display:flex;
-    //     flex-direction: column;
-    // `
-    // const EventItems = styled.div`
-    //     display:flex;
-    //     flex-direction: row;
-    //     width: 92%;
-    //     height: 7.5vh;
-    //     justify-content: space-between;
-    //     font-family: 'Assistant';
-    //     font-style: normal;
-    //     font-weight: 700;
-    //     font-size: 36px;
-    //     line-height: 47px;
-    //     margin-left: 8%;
-    //     margin-right: 0;
-    //     color: #FFFFFF;
-    // `    
+
     const Stuff = styled.div`
         display:felx;
         flex-direction: column;
@@ -49,13 +32,13 @@ function EventItem(props){
         transition-duration: 0.4s;
         -webkit-transition-duration: 0.4s; /* Safari */
     `
-
+    const formattedDate = moment(props.raceData.Date).format('YYYY-MM-DD')
     return (
         <Stuff>
             {props.raceData.map((race, index) => (
                 <div key={index} className="names">
-                    <div className="race_name">{race.Title}</div>
-                    <div className="race_date">{race.Date}</div>
+                    <div className="race_name">{race.Name}</div>
+                    <div className="race_date">{formattedDate}</div>
                     <div className="Buttons">
                         <Button className="button no-border-but">View</Button>
                         <Button className="button no-border-but" >Edit</Button>

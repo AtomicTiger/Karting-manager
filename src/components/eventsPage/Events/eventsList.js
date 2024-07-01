@@ -1,9 +1,26 @@
 import styled from "styled-components";
 import EventItem from "./Eventlist/EventItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import { jwtDecode } from "jwt-decode";
 
 function EventsList() {
-    const [EventData, setEventData] = useState([{Title:"Slovakia 24h", Date:"06-06-2024"},{Title:"24h lozana", Date: "07-12-2023"}])
+    const [EventData, setEventData] = useState([])
+    
+    async function  GetEvents (){
+        const decodedPayload = jwtDecode(sessionStorage.getItem('token'));
+        const res = await axios.get('http://localhost:9000/events/'+decodedPayload.userId, { withCredentials: true });
+        console.log(res.data.Events)
+        setEventData(res.data.Events)
+        
+    }
+
+    useEffect(() => {
+        console.log(EventData);
+        GetEvents()
+        console.log(EventData);
+    }, []);
+
     const EventList = styled.div`
         display:flex;
         flex-direction: column;
