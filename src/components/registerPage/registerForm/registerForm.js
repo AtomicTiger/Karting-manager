@@ -2,10 +2,11 @@ import styled from "styled-components"
 import './registerForm.css';
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
-function RegisterForm() {
+const RegisterForm = () => {
+    const navigate = useNavigate();
     const Button = styled.button`
         width: 48%;
         height: 6vh;
@@ -32,11 +33,25 @@ function RegisterForm() {
     `
     async function Register(){
         try{
-            const response = await axios.post('http://localhost:9000/register',{
+            const res = await axios.post('http://localhost:9000/register',{
                 login:login,
                 password:pass,
             });
-            console.log(response);
+            console.log(res);
+            if (res.status === 201) {
+                const accessToken = res.data.accessToken;
+                console.log('Access Token:', accessToken);
+
+                sessionStorage.setItem("token", res.data.accessToken)
+
+                if (sessionStorage) {
+                    navigate('/main');
+                } else {
+                    console.error('Register failed');
+                }
+            } else {
+                console.error(`Unexpected response status: ${res.status}`);
+            }
         }catch (error) {
             console.error(error);
         }

@@ -3,12 +3,10 @@ import './loginForm.css';
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from 'axios';
-import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { useNavigate } from 'react-router-dom';
 
     const LoginForm = () => {
         const navigate = useNavigate();
-        const signIn = useSignIn();
         const [login, setLogin] = useState('');
         const [pass, setPass] = useState('');
         
@@ -41,25 +39,18 @@ import { useNavigate } from 'react-router-dom';
             e.preventDefault();
     
             try {
-                const formData = { email: login, password: pass };
+                const formData = { login: login, password: pass };
                 const res = await axios.post('http://localhost:9000/login', formData, { withCredentials: true });
     
                 console.log('Login response:', res);
     
-                if (res.status === 200) {
-                    const accessToken = res.data.token;
+                if (res.status === 201) {
+                    const accessToken = res.data.accessToken;
                     console.log('Access Token:', accessToken);
     
-                    const signInResult = signIn({
-                        token: accessToken,
-                        expiresIn: 3600, // Adjust according to your token's lifespan
-                        tokenType: 'Bearer',
-                        authState: res.data.authUserState // Include additional state if needed
-                    });
-    
-                    console.log('SignIn result:', signInResult);
-    
-                    if (signInResult) {
+                    sessionStorage.setItem("token", res.data.accessToken)
+
+                    if (sessionStorage) {
                         navigate('/main');
                     } else {
                         console.error('SignIn failed');
