@@ -1,0 +1,7 @@
+.loginPage{
+    background-color: #3E3D3D;
+    display: flex;
+    height: 100vh;
+    justify-content:space-between;
+    flex-direction:row;
+}

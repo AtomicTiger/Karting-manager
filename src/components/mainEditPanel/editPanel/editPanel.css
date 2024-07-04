@@ -1,0 +1,217 @@
+.no-border {
+    border: none;
+    outline: none; /* This removes the default blue outline for focused inputs */
+    
+}
+.button-menu{
+    width: 80%;
+    height: 6vh;
+    background: white;
+    box-shadow: 4px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-family: 'Assistant';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.88em;
+    line-height: 63px;
+    margin-top: 2vh;
+    padding-bottom: 60px;
+    align-self: center;
+    color: rgb(27, 27, 27);
+    cursor:pointer;
+    user-select:none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    margin-left: 10%;
+}
+
+.no-border-but {
+    border: none;
+    outline: none; /* This removes the default blue outline for focused inputs */
+    
+}
+  
+.no-border-but:focus {
+    border: none;
+    outline: none; /* Ensures no outline is shown when the input is clicked or focused */
+    transition-duration: 0.5s;
+    background-color: #a3a3a3;
+}
+
+.no-border-but:hover{
+    transition-duration: 0.5s;
+    background-color: #a3a3a3;
+}
+
+.button.no-border-but {
+    border: none;
+    background-color: white; /* Example button background color */
+    color: rgb(27, 27, 27); /* Example text color */
+    cursor: pointer;
+    display: inline-flex; /* To allow flex properties for child */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Remove underline from button text */
+}
+
+/* Targeting the Link inside the Button */
+.button.no-border-but a {
+    color: inherit; /* Inherit the button's text color */
+    text-decoration: none; /* Remove underline */
+    display: flex; /* Ensure it behaves like a block/flex element */
+    align-items: center; /* Align text inside the button */
+    justify-content: center; /* Center text inside the button */
+    width: 100%; /* Make the link span the entire button */
+    height: 100%; /* Make the link span the entire button */
+    padding: inherit; /* Use button's padding */
+    font: inherit; /* Use the font style of the parent button */
+}
+
+.button.no-border-but:hover {
+    background-color: #575757; /* Darken background color on hover */
+}
+
+.button.no-border-but a:hover {
+    color: inherit; /* Ensure link color stays consistent on hover */
+}
+
+.stats{
+    width: 90%;
+    height: 45%;
+    background: #3E3D3D;
+    border-radius: 10px;
+    align-self: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.semi-titles{
+    color: white;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+
+.stats h2{
+    margin-top: 20px;
+}
+.editPage{
+    width: 15.5%;
+    height: 95%;
+    margin-top: 20px;
+    background-color: rgb(27, 27, 27);
+    box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0 10px 10px 0px  ;
+    z-index:1;
+}
+@media screen and (max-width: 1000px) {
+    .semi-titles{
+        font-size: 1em;
+    }
+    .button-menu{
+        font-size: 1em;
+        width: 80%;
+        height: 3vh;
+        margin-right: 5%;
+    }
+    .button-menu-small{
+        font-size: 0.5em;
+    }
+}
+.ham{
+    display: none;
+}
+.statsPhon{
+    display: none;
+}
+.stats-phone{
+    display: none;
+}
+@media screen and (max-width: 750px) {
+    .stats-phone{
+        display: flex;
+        flex-direction: column;
+    }
+    .editPage{
+        width: 95%;
+        height: 15.5%;
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        margin-left: 6px;
+        margin-top: 10px;
+        background-color: rgb(27, 27, 27);
+        box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+        border-radius:  10px   ;
+        z-index:1;
+        margin-bottom: 100px;
+        font-size: 1em;
+        
+    }
+    .button-menu{
+        font-size: 1em;
+        width: 60px;
+        height: 4vh;
+        text-align: center;
+        margin-right: 0;
+        margin-left: 5px;
+        padding-bottom: 10px;
+        line-height: 10px;
+    }
+    .stats{
+        display: none;
+    }
+    .statsPhone{
+        display: flex;
+        justify-content: center;
+        margin-left: 5px;
+    }
+    
+    .ham {
+        display: flex;
+        align-self: center;
+    }
+    @keyframes showMenu {
+        0%{
+            top: 0px;
+        }
+        100%{
+            top: 102px;
+        }
+    }
+    @keyframes hideMenu {
+        0%{
+            top: 102px;
+        }
+        100%{
+            top: 0px;
+        }
+    }
+    .statsPopUpShow{
+        animation: hideMenu 1s ;
+        display: none;
+    }
+    .statsPopUpHide{
+        display: flex;
+        z-index: -1;
+        width: 95%;
+        height: 50%;
+        position: absolute;
+        top: 102px;
+        flex-direction: row;
+        text-align: center;
+        justify-content: center;
+        margin-left: 8px;
+        background-color: rgb(27, 27, 27);
+        border-radius:  10px   ;
+        z-index:1;
+        font-size: 1em;
+        animation: showMenu 1;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+    }
+}
+

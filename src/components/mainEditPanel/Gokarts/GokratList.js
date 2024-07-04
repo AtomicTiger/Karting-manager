@@ -1,22 +1,41 @@
 import styled from "styled-components";
-
+import "./GokartList.css"
+import { useState } from "react";
 function GokartList() {
-    const GokartListPage = styled.div`
-
-        width: 34%;
-        height: 95%;
-        margin-top: 20px;
-        margin-left: 21px;
-        background: #525252;
-        box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 10px;
-
-
-    `
+    const [arrowClass,setArrowClass] = useState("arrow-right")
+    const [gokartPage, setGokartPage] = useState("GokartPageShow")
+    const [gokarts, setGokarts] = useState("gokartslist show")
+    const changeGokarts = ()=>{
+        if(arrowClass == "arrow-right"){
+            setArrowClass("arrow-left")
+            setGokartPage("GokartPageHide")
+            setGokarts("gokartslist hide")
+        }else{
+            setArrowClass("arrow-right")
+            setGokartPage("GokartPageShow")
+            setGokarts("gokartslist show")
+        }
+        
+    }
+    const styles = [
+        { display: arrowClass === "arrow-right" ? 'flex' : 'none' },
+        { width: arrowClass === "arrow-right" ? '34%' : '80px' }
+    ];
     return (
-        <GokartListPage>
-
-        </GokartListPage>
+        <div className={gokartPage}>
+            <div className="left">
+                <h1 className="left_name">GOKARTS</h1>
+                <div className="arrow" onClick={changeGokarts}>
+                    <div class={arrowClass}></div>
+                </div>
+            </div>
+            
+            <div className={gokarts} >
+                <div className="gokart">
+                    
+                </div>
+            </div>
+        </div>
     );
   }
   

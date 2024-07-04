@@ -1,6 +1,7 @@
-.left{
+.left-main{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .Title{
     margin-left: 30px;

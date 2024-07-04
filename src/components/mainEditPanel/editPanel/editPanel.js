@@ -1,21 +1,59 @@
 import styled from "styled-components";
+import HeaderEditPanel from "./header/headerEditPanel";
+import "./editPanel.css"
+import { useEffect, useState } from "react";
+import Hamburger from 'hamburger-react'
 
 function EditPanel() {
-    const EditPage = styled.div`
-
-        width: 15.5%;
-        height: 95%;
-        margin-top: 20px;
-        margin-left: 21px;
-        background: #525252;
-        box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 10px;
-
-    `
+    const [bestLap, setBestLap] =useState("Not Updated")
+    const [bestkart, setBestkart] =useState("Not Updated")
+    const [lastDriver, setLastDriver] =useState("Not Updated")
+    const [raceCounterStatus, setRaceCounterStauts] = useState("not ready")
+    const [isOpen, setOpen] = useState(false)
+    const [phoneMenu, setPhoneMenu] = useState("statsPopUpHide")
+    const ShowStats = ()=>{
+        if(isOpen){
+            setPhoneMenu("statsPopUpShow")
+        }else{
+            setPhoneMenu("statsPopUpHide")
+        }
+    }
     return (
-        <EditPage>
-
-        </EditPage>
+        <div className="editPage">
+            <HeaderEditPanel/>
+            <button className="button-menu no-border-but">Add new stint</button>
+            <button className="button-menu no-border-but">Edit gokarts</button>
+            <div className="stats">
+                <h2 className="semi-titles">BestLap:</h2>
+                <li className="semi-titles">{bestLap}</li>
+                <h2 className="semi-titles">FL Kart:</h2>
+                <li className="semi-titles">{bestLap}</li>
+                <h2 className="semi-titles">Last Driver:</h2>
+                <li className="semi-titles">{bestLap}</li>
+            </div>
+            <div className="statsPhone">
+                <div className="ham" onClick={ShowStats}>
+                    <Hamburger toggled={isOpen} toggle={setOpen} color="#FFFFFF" />
+                </div>
+            </div>
+            <div className={phoneMenu}>
+                <div className="stats-phone">
+                    <h2 className="semi-titles">BestLap:</h2>
+                    <li className="semi-titles">{bestLap}</li>
+                </div>
+                <div className="stats-phone">
+                    <h2 className="semi-titles">FL Kart:</h2>
+                    <li className="semi-titles">{bestLap}</li>
+                </div>
+                <div className="stats-phone">
+                    <h2 className="semi-titles">Last Driver:</h2>
+                    <li className="semi-titles">{bestLap}</li>
+                </div>
+                
+                
+            </div>
+        </div>
+        
     );
   }
   
