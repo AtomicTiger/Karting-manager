@@ -1,5 +1,6 @@
 
 .tabelPage{
+
     width: 48%;
     height: 95%;
     margin-top: 20px;
@@ -8,11 +9,81 @@
     box-shadow: -10px 10px 4px rgba(0, 0, 0, 0.25);
      border-radius: 10px;
     position: absolute;
-        z-index: 0;
-        left: 16%;
+    z-index: 0;
+    left: 16%;
 }
 
 
+table{
+    color: white;
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 11%;
+}
+.header-tr{
+    background: #3d3d3d ;
+    display: flex;
+    border-radius: 8px;
+    justify-content: space-evenly;
+    font-size: 2em;
+}
+
+.driver-th{
+    width: 25%;
+}
+.kart-th{
+    width: 25%;
+}
+.bestLap-th{
+    width: 25%;
+}
+.pits{
+    width: 7%;
+}
+.body-stints{
+    background: #3d3d3d ;
+    display: flex;
+    flex-direction:column;
+    border-radius: 8px;
+    justify-content: space-evenly;
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+.driver-td{
+    width: 25%;
+}
+.kart-td{
+    width: 25%;
+    padding-left: 4%;
+}
+.bestLap-td{
+    width: 25%;
+    padding-left: 3%;
+}
+.pit-td{
+    width: 7%;
+    padding-left: 2%;   
+}
+.row-table{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 5px;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+}
+.fastest{
+    color: blueviolet;
+}
+.slow{
+    color: red;
+}
+.mid{
+    color: yellow;
+}
+.fast{
+    color: greenyellow;
+}
 @media screen and (max-width: 750px) {
     .tabelPage{
         width: 90%;
@@ -21,6 +92,20 @@
         left: 0;
         margin-left: 15px;
         border-radius: 0px 0px 10px 10px;
+    }
+
+    .header-tr{
+
+        font-size: 2.5em;
+    }
+    .body-stints{
+        font-size: 2.2em;
+    }
+
+}
+@media screen and (max-width: 500px) {
+    table{
+        margin-top: 75px;
     }
 }
 @media screen and (max-width: 376px) {

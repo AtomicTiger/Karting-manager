@@ -16,6 +16,7 @@ function HeaderEditPanel() {
     const GoBack = ()=>{
         navigate('/main')
     }
+    
     return (
         <div className="headerContainer" onClick={GoBack}>
             <svg className='svg-icon' width="50" height="50" viewBox="0 5 90 50" fill="none" xmlns="http://www.w3.org/2000/svg">

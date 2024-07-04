@@ -10,7 +10,7 @@ function EditPanel() {
     const [lastDriver, setLastDriver] =useState("Not Updated")
     const [raceCounterStatus, setRaceCounterStauts] = useState("not ready")
     const [isOpen, setOpen] = useState(false)
-    const [phoneMenu, setPhoneMenu] = useState("statsPopUpHide")
+    const [phoneMenu, setPhoneMenu] = useState("statsPopUpShow")
     const ShowStats = ()=>{
         if(isOpen){
             setPhoneMenu("statsPopUpShow")
