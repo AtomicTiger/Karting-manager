@@ -16,9 +16,9 @@ function EventsList() {
     }
 
     useEffect(() => {
-        console.log(EventData);
+        
         GetEvents()
-        console.log(EventData);
+        
     }, []);
 
     const EventList = styled.div`

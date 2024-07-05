@@ -1,0 +1,19 @@
+.svg-back{
+    cursor: pointer;
+    margin-left: 20px;
+    align-self: center;
+}
+
+.title-stints{
+    width: 100%;
+    padding-right: 50px;
+    text-align: center;
+    align-self: center;
+}
+
+
+@media screen and (max-width: 750px) {
+    .title-stints{
+        padding-right: 20px;
+    }
+}

@@ -28,7 +28,6 @@ const router = createBrowserRouter([
     {path: '/view', element: <ProtectedRoute> <ViewPage/> </ProtectedRoute> },
     {path: '/create', element: <ProtectedRoute> <EventCreation/></ProtectedRoute> },
     {path: '/gokarts', element: <ProtectedRoute> <EditGokarts/></ProtectedRoute> },
-    {path: '/stats', element: <ProtectedRoute> <RaceStats/> </ProtectedRoute> },
     {path: '/stint', element: <ProtectedRoute> <FinishedStint/> </ProtectedRoute>},
   ]},
 ])

@@ -3,6 +3,7 @@ import HeaderEditPanel from "./header/headerEditPanel";
 import "./editPanel.css"
 import { useEffect, useState } from "react";
 import Hamburger from 'hamburger-react'
+import { Link } from "react-router-dom";
 
 function EditPanel() {
     const [bestLap, setBestLap] =useState("Not Updated")
@@ -11,6 +12,7 @@ function EditPanel() {
     const [raceCounterStatus, setRaceCounterStauts] = useState("not ready")
     const [isOpen, setOpen] = useState(false)
     const [phoneMenu, setPhoneMenu] = useState("statsPopUpShow")
+    
     const ShowStats = ()=>{
         if(isOpen){
             setPhoneMenu("statsPopUpShow")
@@ -21,8 +23,8 @@ function EditPanel() {
     return (
         <div className="editPage">
             <HeaderEditPanel/>
-            <button className="button-menu no-border-but">Add new stint</button>
-            <button className="button-menu no-border-but">Edit gokarts</button>
+            <button className="button-menu no-border-but"><Link to="/stint">Add new stint</Link></button>
+            <button className="button-menu no-border-but"><Link to="/gokarts">Edit gokarts</Link></button>
             <div className="stats">
                 <h2 className="semi-titles">BestLap:</h2>
                 <li className="semi-titles">{bestLap}</li>
