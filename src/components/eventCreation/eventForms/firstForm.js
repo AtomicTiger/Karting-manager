@@ -16,6 +16,7 @@ function EventForm() {
     const [date,setDate] = new useState()
     const [inputString, setInputString] = useState('');
     const MAX_DRIVERS = 5;
+    const [error, setError] = useState('')
 
     const addNewDriver = () => {
 
@@ -98,6 +99,7 @@ function EventForm() {
     }
     const getDate = (e)=>{
         setDate(e.target.value)
+        console.log(date)
     }
     const Create = async (e) =>{
         e.preventDefault();
@@ -107,24 +109,26 @@ function EventForm() {
                 names.push(driver.name);
             });
             const decodedPayload = jwtDecode(sessionStorage.getItem('token'));
-            console.log(decodedPayload)
-            const formData = { name: eventName,userId: decodedPayload.userId, driver1: names[0], driver2: names[1] ,driver3: names[2],driver4: names[3],driver5: names[4], date: date};
+
+            const formData = { name: eventName,userId: decodedPayload.userId, driver1: names[0], driver2: names[1] ,driver3: names[2],driver4: names[3],driver5: names[4],Date: date};
+            console.log(formData)
             const res = await axios.post('http://localhost:9000/eventCreation', formData, { withCredentials: true });
             if(!res){
-                console.log("Event creation failed")
+                setError("Event creation failed")
             }
             const event_id = res.data.event_id
             const resGokarts = await axios.post('http://localhost:9000/gokartsCreation/'+ event_id, {gokarts: gokarts} )
 
             if(!resGokarts){
-                console.log("Gokarts creation failed")
+                setError("Gokarts creation failed")
+                
             }
             if(res.status === 201 && resGokarts.status === 201){
                 console.log("Event created")
                 navigate('/main')
             }
         } catch (error) {
-            console.error("Login error:", error);
+            setError("Something went wrong. Try again!")
         }
     }
 
@@ -132,6 +136,7 @@ function EventForm() {
     const shouldHideDel = driversAmount < 3  || formPage !== 1;
     return (
         <form className="EventForm" onSubmit={Create}>
+            <div className="error-message">{error}</div>
             <div className="inputs" style={{ display: formPage != 1 ? 'none' : 'flex' }}>
                 <input key="eventname" className="no-border input" onChange={onChangeNameHandler} placeholder="Event name"  value={eventName}/>
                 {drivers.map((driver, index) => (
@@ -143,7 +148,7 @@ function EventForm() {
             <div className="gokarts" style={{ display: formPage != 2 ? 'none' : 'flex' }}>
                 <input  key="gokarts" onChange={getGokarts} className="no-border input" placeholder="Add gokarts number: 1,2,3,4"/>
 
-                <input  key="date" type="date" onChange={getDate}  className="no-border input" placeholder="Add gokarts number: 1,2,3,4"/>
+                <input  key="date" type="date" onChange={getDate}  className="no-border input"/>
             </div>
             <Button className="button no-border-but" onClick={addNewDriver}  style={{  display: shouldHideAdd ? 'none' : 'flex'}}>Add driver</Button>
             <Button className="button no-border-but" onClick={deleteDriver} style={{ display: shouldHideDel ? 'none' : 'flex' }} >Delete Last driver</Button>

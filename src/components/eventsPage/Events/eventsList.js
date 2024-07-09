@@ -25,7 +25,8 @@ function EventsList() {
         display:flex;
         flex-direction: column;
         width: 91%;
-        height: 73vh;
+        max-height: 73vh;
+        overflow-y: auto;
         slef-align: center;
         background: #3E3D3D;
         box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4);

@@ -43,15 +43,12 @@ function StintForm() {
         setKart(e.target.value)
     }
     const DriverHandler = (e)=>{
-        console.log(driver)
         setDriver(e.target.value)
-        console.log(driver)
     }
     const CreateStint = async(e)=>{
         e.preventDefault();
         try{
             const EventID = sessionStorage.getItem('Event');
-            console.log(driver)
             const StintData = {gokart: kart, driver: driver, fastestLap: bestLap}
             if(!StintData.driver){
                 StintData.driver = extractedDrivers.Driver1
@@ -81,7 +78,7 @@ function StintForm() {
                 </option>
             ))}
             </select>
-            <div className="inputs">
+            <div className="inputsStints">
                 <input className="InputStints LogInputSelect  no-border" onChange={BestLapHandler}  placeholder="Best Lap"></input>
                 <input className="InputStints LogInputSelect  no-border" onChange={KartHandler} type="number" placeholder="Kart"></input>
             </div>

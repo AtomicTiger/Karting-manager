@@ -4,7 +4,6 @@ import EventsPage from './components/eventsPage/eventsPage';
 import LoginPage from './components/loginPage/Login.js';
 import EditPage from './components/mainEditPanel/editPage.js';
 import ViewPage from './components/mainViewPanel/viewPanel.js';
-import RaceStats from './components/raceStats/raceStats.js';
 import RegisterPage from './components/registerPage/register';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import FinishedStint from './components/stintEnd/stintEnd.js';

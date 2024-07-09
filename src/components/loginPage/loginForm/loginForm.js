@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
         const navigate = useNavigate();
         const [login, setLogin] = useState('');
         const [pass, setPass] = useState('');
-        
+        const [error,setError] = useState('')
         const Button = styled.button`
             width: 48%;
             height: 6vh;
@@ -42,7 +42,6 @@ import { useNavigate } from 'react-router-dom';
                 const formData = { login: login, password: pass };
                 const res = await axios.post('http://localhost:9000/login', formData, { withCredentials: true });
     
-                console.log('Login response:', res);
     
                 if (res.status === 201) {
                     const accessToken = res.data.accessToken;
@@ -53,13 +52,13 @@ import { useNavigate } from 'react-router-dom';
                     if (sessionStorage) {
                         navigate('/main');
                     } else {
-                        console.error('SignIn failed');
+                        setError("SignIn failed")
                     }
                 } else {
-                    console.error(`Unexpected response status: ${res.status}`);
+                    setError(res.data.message)
                 }
             } catch (error) {
-                console.error("Login error:", error);
+                setError("Something went wrong. Try again!");
             }
         };
     
@@ -88,6 +87,7 @@ import { useNavigate } from 'react-router-dom';
                 </div>
             </Link>
             <form className="form" onSubmit={Login}>
+                <div className="error-message">{error}</div>
                 <input className="no-border LogInput" onChange={onLoginChange} placeholder="Login"/>
                 <input className="no-border LogInput" onChange={onPassChange} type="password"  placeholder="Password"/>  
                 <Button className="button no-border-but" type="submit" >Log in</Button>

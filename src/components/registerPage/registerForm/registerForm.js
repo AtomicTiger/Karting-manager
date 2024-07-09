@@ -31,6 +31,8 @@ const RegisterForm = () => {
         -webkit-transition-duration: 0.4s; /* Safari */
 
     `
+    const [error,setError] = useState('')
+
     async function Register(){
         try{
             const res = await axios.post('http://localhost:9000/register',{
@@ -47,13 +49,13 @@ const RegisterForm = () => {
                 if (sessionStorage) {
                     navigate('/main');
                 } else {
-                    console.error('Register failed');
+                    setError('Register failed');
                 }
             } else {
-                console.error(`Unexpected response status: ${res.status}`);
+                setError(res.data.message);
             }
         }catch (error) {
-            console.error(error);
+            setError("Something went wrong. Try again!");
         }
     }
 
@@ -82,7 +84,7 @@ const RegisterForm = () => {
                     <h1>Karting Manager</h1>
                 </div>
             </Link>
-            
+            <div className="error-message">{error}</div>
             <input className="no-border LogInput" onChange={onLoginChange} placeholder="Login"/>
             <input className="no-border LogInput" onChange={onPassChange} type="password"  placeholder="Password"></input>  
             <Button className="button no-border-but" onClick={Register}>Create Team</Button>

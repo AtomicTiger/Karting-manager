@@ -3,6 +3,7 @@
 
     width: 48%;
     height: 95%;
+
     margin-top: 20px;
     margin-left: 25px;
     background-color: rgb(27, 27, 27);
@@ -48,6 +49,8 @@ table{
     justify-content: space-evenly;
     font-size: 1.5em;
     margin-top: 20px;
+    max-height: 70%;
+    overflow-y: auto;
 }
 .driver-td{
     width: 25%;

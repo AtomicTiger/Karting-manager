@@ -1,30 +1,53 @@
 import "./table.css"
-import { useState } from "react";
-function TablePage() {
-    const stintsData = [
-      {
-        driver: "qwe qwe",
-        kart: {number: 1, status: "fast"},
-        bestLap: "21.231", 
-        pit: 1
-      },{
-        driver: "qwe qwe",
-        kart: {number: 2, status: "fast"},
-        bestLap: "21.521", 
-        pit: 2
-      },{
-        driver: "qwe qwe",
-        kart: {number: 3, status: "mid"},
-        bestLap: "22.231", 
-        pit: 3
-      },{
-        driver: "qwe qwe",
-        kart: {number: 4, status: "slow"},
-        bestLap: "25.231", 
-        pit: 4
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+function TablePage(props) {
+  const [stints, setStints] = useState([]);
+  const [bestLap, setBestLap] = useState(""); 
+
+  async function GetStints() {
+    try {
+      const res = await axios.get(`http://localhost:9000/StintsInfo/${props.eventID}`, { withCredentials: true });
+      const stintsData = res.data.StintsData;
+
+      let currentBestLap = null;
+
+      const mergedDataPromises = stintsData.map(async (stint) => {
+        const gokartRes = await axios.get(`http://localhost:9000/GetGokartSpecifiedInfo/${stint.GokartID}`, { withCredentials: true });
+        const gokartData = gokartRes.data.GokartsData;
+
+        const formattedBestLap = parseFloat(stint.BestLap.replace(",", "."));
+
+        if (currentBestLap === null || formattedBestLap < currentBestLap) {
+          currentBestLap = formattedBestLap;
+        }
+
+        return {
+          driver: stint.Driver,
+          kart: {
+            number: gokartData.Number,
+            status: gokartData.Status || "unknown" 
+          },
+          bestLap: stint.BestLap.replace(",", "."), 
+          pit: stint.Pit
+        };
+      });
+
+      const mergedData = await Promise.all(mergedDataPromises);
+      setStints(mergedData);
+
+      if (currentBestLap !== null) {
+        setBestLap(currentBestLap.toFixed(3)); 
       }
-      ]
-    const [bestLap,setBestLap] = useState("21.231")
+    } catch (error) {
+      console.error('Error fetching stints or go-kart data:', error);
+    }
+  }
+
+  useEffect(() => {
+    GetStints();
+  }, []);
     return (
         <div className="tabelPage">
             <table>
@@ -44,8 +67,8 @@ function TablePage() {
               </div>
               
               <div className="body-stints">
-                {stintsData.map((stint, index) => (
-                    <div className="row-table">
+                {stints.map((stint, index) => (
+                    <div className="row-table" key={index}>
                       <td className="driver-td">{stint.driver}</td>
                       <td className={`kart-td ${stint.kart.status}`}>{stint.kart.number}</td>
                       <td className={`bestLap-td ${bestLap === stint.bestLap ? "fastest" : ""}`}>{stint.bestLap}</td>
