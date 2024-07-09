@@ -50,13 +50,16 @@ function StintForm() {
         try{
             const EventID = sessionStorage.getItem('Event');
             const StintData = {gokart: kart, driver: driver, fastestLap: bestLap}
+            const LapData = {Number: kart,  FastestLap: bestLap}
             if(!StintData.driver){
                 StintData.driver = extractedDrivers.Driver1
             }
         
             const res = await axios.post(`http://localhost:9000/stint/${EventID}`, StintData, { withCredentials: true });
-        
-            if (res.status === 201) {
+            
+            const updateBestLap = await axios.post(`http://localhost:9000/FastestLapUpdate/${EventID}`, LapData,{ withCredentials: true })
+
+            if (res.status === 201 && updateBestLap.status === 201) {
                 navigate('/edit');
             } else {
                 setError(res.data.message);
