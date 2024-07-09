@@ -120,3 +120,33 @@
         display: none;
     }
 }
+
+.gokart{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 95%;
+    justify-content: space-evenly;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.Fast{
+    color: greenyellow;
+    align-self: center;
+}
+.Mid{
+    color: yellow;
+    align-self: center;
+}
+.Slow{
+    color: red;
+    align-self: center;
+}
+.deafult{
+    color: white;
+    align-self: center;
+}
+.hide{
+    display: none;
+}

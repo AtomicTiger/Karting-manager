@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import "./GokartList.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import GokartItem from "./Gokart";
+import axios from "axios";
 function GokartList() {
     const [arrowClass,setArrowClass] = useState("arrow-right")
     const [gokartPage, setGokartPage] = useState("GokartPageShow")
@@ -17,10 +19,24 @@ function GokartList() {
         }
         
     }
-    const styles = [
-        { display: arrowClass === "arrow-right" ? 'flex' : 'none' },
-        { width: arrowClass === "arrow-right" ? '34%' : '80px' }
-    ];
+    const [gokartsData, setGokartsData] = useState([])
+    async function GetGokartsData (){
+        try{
+            const result = await axios.get(`http://localhost:9000/gokartInfo/${sessionStorage.getItem("Event")}`)
+
+            const sortedData = result.data.GokartsData.sort((a, b) => a.Number - b.Number);
+
+            setGokartsData(sortedData)
+            
+        }
+        catch{
+            console.log("sth went wrong")
+        }
+    }
+
+    useEffect(()=>{
+        GetGokartsData()
+    },[])
     return (
         <div className={gokartPage}>
             <div className="left">
@@ -31,9 +47,11 @@ function GokartList() {
             </div>
             
             <div className={gokarts} >
-                <div className="gokart">
-                    
-                </div>
+            <div className="gokart">
+                {gokartsData.map((gokart, index) => (
+                    <GokartItem dataGokarts={gokart} key={index} />
+                ))}
+            </div>
             </div>
         </div>
     );
