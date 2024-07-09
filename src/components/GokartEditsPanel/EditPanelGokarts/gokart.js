@@ -64,12 +64,17 @@ function GokartItem(props) {
         setNewStatus(e.target.value)
     }
     const update = async()=>{
-        if(newStatus === null){
-            setNewStatus("Fast")
-        }
+        
         
         try {
-            const updateData = { Number: newNumber, Status: newStatus, FastestLap: props.data.FastestLap };
+            let updateData = {}
+            console.log(newStatus)
+            if(newStatus === null){
+                 updateData = { Number: newNumber, Status: "Fast", FastestLap: props.data.FastestLap };
+            }else{
+                 updateData = { Number: newNumber, Status: newStatus, FastestLap: props.data.FastestLap };
+            }
+            
             const res = await axios.post(`http://localhost:9000/gokartUpdate/${props.data._id}`, updateData, { withCredentials: true });
             console.log('Updated:', res.data);
             navigate("/edit")
