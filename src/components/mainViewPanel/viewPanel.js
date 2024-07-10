@@ -1,21 +1,23 @@
 import styled from "styled-components";
 import Header from "./Header/Header";
 import "./viewPanel.css"
+import GokartsList from "./Gokarts/Gokarts";
 
 function ViewPage() {
 
     const Background = styled.div`
       width:100%;
-      height:100vh;
+      height:auto;
       background-color: #3E3D3D;
       color:white;
       display:flex;
-      justify-content:center;
+      flex-direction:column;
 
     `
     return (
       <Background>
           <Header/>
+          <GokartsList/>
       </Background>
       
     );

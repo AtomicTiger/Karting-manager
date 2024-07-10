@@ -8,5 +8,48 @@
     align-self: center;
     margin-right: 10px;
     cursor: pointer;
+    
 
+}
+
+.ViewTabel{
+    margin: 0;
+
+}
+.ViewTabelHedaer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    background-color: #3d3d3d;
+    border-radius: 7px;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 1000px){
+    .ViewTabelHedaer{
+        font-size: 1.5em;
+    }
+}
+@media screen and (max-width: 800px){
+    .ViewTabelHedaer{
+        font-size: 1em;
+    }
+}
+@media screen and (max-width: 500px){
+    .ViewTabelHedaer{
+        font-size: 2em;
+    }
+
+}
+
+.ViewTableBody{
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+.Tbody{
+    width: 100%;
 }

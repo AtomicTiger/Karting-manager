@@ -12,6 +12,8 @@ function Header() {
       display:flex;
       flex-direction:row;
       justify-content:center;
+      align-self:center;
+      box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
 
     `
     const goBack = ()=>{
