@@ -9,7 +9,7 @@ function GokartsList() {
     const Background = styled.div`
         width:50%;
         border-radius: 10px;
-        height:60vh;
+        height: 85vh;
         background-color: rgb(27,27,27);
         color:white;
         display:flex;
@@ -26,11 +26,11 @@ function GokartsList() {
     const StyledTbody = styled.tbody`
         display: block;
         margin-top:10px;
-        max-height: 50vh;
+        max-height: 70vh;
         overflow-y: auto;
         width: 100%;
         @media screen and (max-width: 650px){
-            max-height: 53vh;
+            max-height: 73vh;
         }
     `;
 

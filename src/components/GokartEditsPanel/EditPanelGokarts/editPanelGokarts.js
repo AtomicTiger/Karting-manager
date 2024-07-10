@@ -39,7 +39,7 @@ function EditGokartsPanel() {
       align-self:center;
       @media screen and ( max-width: 900px){
         width: 80%;
-        font-size: 1em;
+        
       }
     `
     const Header = styled.div`

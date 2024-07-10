@@ -68,7 +68,7 @@ function StintForm() {
         catch{
             setError('Failed to create stint. Please try again. Make sure you write proper data!');
         }
-        
+            
     }
     return (
         

@@ -12,7 +12,6 @@ function GokartsRow(props) {
             font-size: 2em;
 
     `
-    console.log(props.data)
 
     return (
       <Background>

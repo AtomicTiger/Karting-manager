@@ -6,8 +6,8 @@ import GokartsList from "./Gokarts/Gokarts";
 function ViewPage() {
 
     const Background = styled.div`
-      width:100%;
-      height:auto;
+      width: 100%;
+      height: 100vh;
       background-color: #3E3D3D;
       color:white;
       display:flex;
