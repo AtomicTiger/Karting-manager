@@ -84,7 +84,7 @@ function GokartItem(props) {
     }
     return (
         <Background>
-                <h3>{props.data.Number}</h3>
+                <h4 className="NumberEditPanel" >{props.data.Number}</h4>
                 <h3 className={statusClass}>{props.data.Status}</h3>
                 <button className="GokartEditButton no-border-but" onClick={Edit}>edit</button>
                 <EditPanel style={{display: edit ? "flex" : "none"}}>

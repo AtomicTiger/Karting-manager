@@ -3,6 +3,8 @@
 
     width: 48%;
     height: 95%;
+    
+
 
     margin-top: 20px;
     margin-left: 25px;
@@ -20,6 +22,7 @@ table{
     width: 80%;
     margin-top: 20px;
     margin-left: 11%;
+    
 }
 .header-tr{
     background: #3d3d3d ;
@@ -49,7 +52,7 @@ table{
     justify-content: space-evenly;
     font-size: 1.5em;
     margin-top: 20px;
-    max-height: 70%;
+    max-height: 80vh;
     overflow-y: auto;
 }
 .driver-td{
@@ -58,14 +61,17 @@ table{
 .kart-td{
     width: 25%;
     padding-left: 4%;
+    align-self: center;
 }
 .bestLap-td{
     width: 25%;
     padding-left: 3%;
+    align-self: center;
 }
 .pit-td{
     width: 7%;
     padding-left: 2%;   
+    align-self: center;
 }
 .row-table{
     display: flex;
@@ -104,7 +110,10 @@ table{
     .body-stints{
         font-size: 2.2em;
     }
-
+    .body-stints{
+        max-height: 60vh;
+    }
+    
 }
 @media screen and (max-width: 500px) {
     table{

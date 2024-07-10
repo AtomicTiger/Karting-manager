@@ -1,0 +1,12 @@
+.TitleViewPanel{
+    align-self: center;
+}
+
+.SvgViewPanel{
+    width: 52px;
+    height: 52px;
+    align-self: center;
+    margin-right: 10px;
+    cursor: pointer;
+
+}

@@ -20,7 +20,21 @@
     border-radius: 10px;
     box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
 }
+@media screen and ( max-width: 900px){
+    .Fast{
+        color: greenyellow;
+        font-size: 2em;
+    }
+    .Mid{
+        color: yellow;
+        font-size: 2em;
+    }
+    .Slow{
+        color: red;
+        font-size: 2em;
+    }
 
+}
 
 .Fast{
     color: greenyellow;
@@ -56,4 +70,8 @@
 
 .GokartUpdate{
     margin-top: 10px;
+}
+
+.NumberEditPanel{
+    align-self: center;
 }
