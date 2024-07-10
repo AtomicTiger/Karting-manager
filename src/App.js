@@ -8,6 +8,8 @@ import RegisterPage from './components/registerPage/register';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import FinishedStint from './components/stintEnd/stintEnd.js';
 import MainPage from './components/MainPage/MainPage.js';
+import NotFoundPage from './components/NotFoundPage.js';
+
 const ProtectedRoute = ({ children }) => {
   const token = sessionStorage.getItem('token');
   if (!token) {
@@ -28,6 +30,7 @@ const router = createBrowserRouter([
     {path: '/create', element: <ProtectedRoute> <EventCreation/></ProtectedRoute> },
     {path: '/gokarts', element: <ProtectedRoute> <EditGokarts/></ProtectedRoute> },
     {path: '/stint', element: <ProtectedRoute> <FinishedStint/> </ProtectedRoute>},
+    { path: '*', element: <NotFoundPage /> }
   ]},
 ])
 
