@@ -17,8 +17,7 @@ function TablePage(props) {
         const gokartRes = await axios.get(`http://localhost:9000/GetGokartSpecifiedInfo/${stint.GokartID}`, { withCredentials: true });
         const gokartData = gokartRes.data.GokartsData;
   
-        // Convert the lap time to total milliseconds for comparison
-        const formattedBestLap = convertLapTimeToMilliseconds(stint.BestLap);
+        const formattedBestLap = convertLapTimeToMilliseconds(stint.BestLap.replace(",", "."));
   
         if (currentBestLap === null || formattedBestLap < currentBestLap) {
           currentBestLap = formattedBestLap;
@@ -39,7 +38,7 @@ function TablePage(props) {
       setStints(mergedData);
   
       if (currentBestLap !== null) {
-        setBestLap(convertMillisecondsToLapTime(currentBestLap)); // Convert back to original format for display
+        setBestLap(convertMillisecondsToLapTime(currentBestLap));
       }
     } catch (error) {
       console.error('Error fetching stints or go-kart data:', error);
@@ -50,20 +49,25 @@ function TablePage(props) {
     GetStints();
   }, []);
   
-  // Helper function to convert lap time string to total milliseconds
   function convertLapTimeToMilliseconds(lapTime) {
-    const [minutes, rest] = lapTime.split(":");
-    const [seconds, thousandths] = rest.split(".");
+    let totalMilliseconds = 0;
   
-    const totalMilliseconds = parseInt(minutes) * 60 * 1000 + parseFloat(seconds) * 1000 + parseInt(thousandths);
+    if (lapTime.includes(":")) {
+      const [minutes, rest] = lapTime.split(":");
+      const [seconds, thousandths] = rest.split(".");
+      totalMilliseconds = parseInt(minutes) * 60 * 1000 + parseFloat(seconds) * 1000 + parseInt(thousandths);
+    } else {
+      const [seconds, thousandths] = lapTime.split(".");
+      totalMilliseconds = parseFloat(seconds) * 1000 + parseInt(thousandths);
+    }
+  
     return totalMilliseconds;
   }
   
-  // Helper function to convert total milliseconds back to lap time string
   function convertMillisecondsToLapTime(milliseconds) {
     const minutes = Math.floor(milliseconds / 60000);
-    const seconds = ((milliseconds % 60000) / 1000).toFixed(3); // Ensures 3 decimal places
-    return `${minutes}:${seconds.padStart(6, '0')}`; // Pad seconds to ensure proper format
+    const seconds = ((milliseconds % 60000) / 1000).toFixed(3);
+    return minutes > 0 ? `${minutes}:${seconds.padStart(6, '0')}` : seconds;
   }
     return (
         <div className="tabelPage">
