@@ -4,50 +4,67 @@ import axios from "axios";
 
 function TablePage(props) {
   const [stints, setStints] = useState([]);
-  const [bestLap, setBestLap] = useState(""); 
-
+  const [bestLap, setBestLap] = useState("");
+  
   async function GetStints() {
     try {
       const res = await axios.get(`http://localhost:9000/StintsInfo/${props.eventID}`, { withCredentials: true });
       const stintsData = res.data.StintsData;
-
+  
       let currentBestLap = null;
-
+  
       const mergedDataPromises = stintsData.map(async (stint) => {
         const gokartRes = await axios.get(`http://localhost:9000/GetGokartSpecifiedInfo/${stint.GokartID}`, { withCredentials: true });
         const gokartData = gokartRes.data.GokartsData;
-
-        const formattedBestLap = parseFloat(stint.BestLap.replace(",", "."));
-
+  
+        // Convert the lap time to total milliseconds for comparison
+        const formattedBestLap = convertLapTimeToMilliseconds(stint.BestLap);
+  
         if (currentBestLap === null || formattedBestLap < currentBestLap) {
           currentBestLap = formattedBestLap;
         }
-
+  
         return {
           driver: stint.Driver,
           kart: {
             number: gokartData.Number,
-            status: gokartData.Status || "unknown" 
+            status: gokartData.Status || "unknown"
           },
-          bestLap: stint.BestLap.replace(",", "."), 
+          bestLap: stint.BestLap.replace(",", "."),
           pit: stint.Pit
         };
       });
-
+  
       const mergedData = await Promise.all(mergedDataPromises);
       setStints(mergedData);
-
+  
       if (currentBestLap !== null) {
-        setBestLap(currentBestLap.toFixed(3)); 
+        setBestLap(convertMillisecondsToLapTime(currentBestLap)); // Convert back to original format for display
       }
     } catch (error) {
       console.error('Error fetching stints or go-kart data:', error);
     }
   }
-
+  
   useEffect(() => {
     GetStints();
   }, []);
+  
+  // Helper function to convert lap time string to total milliseconds
+  function convertLapTimeToMilliseconds(lapTime) {
+    const [minutes, rest] = lapTime.split(":");
+    const [seconds, thousandths] = rest.split(".");
+  
+    const totalMilliseconds = parseInt(minutes) * 60 * 1000 + parseFloat(seconds) * 1000 + parseInt(thousandths);
+    return totalMilliseconds;
+  }
+  
+  // Helper function to convert total milliseconds back to lap time string
+  function convertMillisecondsToLapTime(milliseconds) {
+    const minutes = Math.floor(milliseconds / 60000);
+    const seconds = ((milliseconds % 60000) / 1000).toFixed(3); // Ensures 3 decimal places
+    return `${minutes}:${seconds.padStart(6, '0')}`; // Pad seconds to ensure proper format
+  }
     return (
         <div className="tabelPage">
             <table>
