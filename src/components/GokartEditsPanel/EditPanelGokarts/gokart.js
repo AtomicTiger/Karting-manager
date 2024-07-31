@@ -106,7 +106,7 @@ function GokartItem(props) {
                     <div className="EditGokartForm">
                         <input className="GokartUpdate input no-border-but" onChange={numberChange} type="Number" placeholder={props.data.Number}/>
                         <h4 className="GokartUpdate" >{props.data.FastestLap}</h4>
-                        <select className="GokartUpdate LogInput-select no-border" onChange={statusChange} defaultValue={props.data.Status}>
+                        <select className="GokartUpdate LogInput-select no-border" onChange={statusChange} defaultValue={newStatus}>
                             <option value="Fast">Fast</option>
                             <option value="Mid">Mid</option>
                             <option value="Slow">Slow</option>
